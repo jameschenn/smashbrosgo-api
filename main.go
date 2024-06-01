@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/gin-gonic/gin"
+	controllers "github.com/jameschenn/smashbrosgo-api/controllers"
 	utils "github.com/jameschenn/smashbrosgo-api/utils"
 )
 
@@ -13,12 +12,7 @@ func init() {
 }
 
 func main() {
-	fmt.Println("Hello Gopher James")
 	router := gin.Default()
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	router.GET("/characters", controllers.CharacterCreate)
 	router.Run() // listen and serve on 0.0.0.0:8080
 }
