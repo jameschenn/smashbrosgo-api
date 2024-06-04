@@ -9,22 +9,39 @@ import (
 func CharacterCreate(c *gin.Context) {
 
 	// Get data off request body
+	var payload struct {
+		Name            string
+		Series          string
+		FirstAppearance string
+		Description     string
+		Tier            string
+		Weight          float64
+		Speed           float64
+		NeutralB        string
+		UpB             string
+		SideB           string
+		DownB           string
+		Final_Smash     string
+		Image_URL       string
+	}
+
+	c.Bind(&payload)
 
 	// Create Character
 	character := models.Character{
-		Name:            "James Chen",
-		Series:          "James Chen",
-		FirstAppearance: "1992",
-		Description:     "Mario is an all-around fighter who uses his wide variety of techniques to respond to any situation. In Super Smash Bros. Ultimate, he shows up in his wedding tux and builder outfit, and Cappy even makes an appearance!",
-		Tier:            "A",
-		Weight:          160,
-		Speed:           3.33,
-		NeutralB:        "Strong Communication!!",
-		UpB:             "Rising Coding Skills!!",
-		SideB:           "Collaborative Spirit!!",
-		DownB:           "Critical Thinking Charge!!",
-		Final_Smash:     "Got the job!!",
-		Image_URL:       "https://avatars.githubusercontent.com/u/73676915?v=4",
+		Name:            payload.Name,
+		Series:          payload.Series,
+		FirstAppearance: payload.FirstAppearance,
+		Description:     payload.Description,
+		Tier:            payload.Tier,
+		Weight:          payload.Weight,
+		Speed:           payload.Speed,
+		NeutralB:        payload.NeutralB,
+		UpB:             payload.UpB,
+		SideB:           payload.SideB,
+		DownB:           payload.DownB,
+		Final_Smash:     payload.Final_Smash,
+		Image_URL:       payload.Image_URL,
 	}
 
 	result := utils.DB.Create(&character)
@@ -33,8 +50,8 @@ func CharacterCreate(c *gin.Context) {
 		c.Status(400)
 		return
 	}
-	// Return Character
 
+	// Return Character
 	c.JSON(200, gin.H{
 		"character": character,
 	})
