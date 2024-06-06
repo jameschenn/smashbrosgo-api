@@ -23,6 +23,11 @@ the [Gin](https://gin-gonic.com/docs/introduction/) Web Framework, [GORM](https:
   PORT=3000
   DATABASE={YOUR DATABASE CREDENTIALS}
   ```
+5. Migrate tables to database
+  
+  ```bash
+  go run migrations/migrations.go
+  ```
 
 6. Seed Database
   
