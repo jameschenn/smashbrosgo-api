@@ -35,7 +35,7 @@ the [Gin](https://gin-gonic.com/docs/introduction/) Web Framework, [GORM](https:
   go run seeders/seed.go
   ```
 
-6. Run the API:
+7. Run the API:
   > [!NOTE]
   > [CompileDaemon](https://pkg.go.dev/github.com/githubnemo/CompileDaemon#section-readme) watches your .go files in a directory and invokes go build if a file changed. 
 
